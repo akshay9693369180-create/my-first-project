@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Cadet Account - NCC AI Learning Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="login-container">
+
+        <!-- ================= LEFT HERO SECTION ================= -->
+        <div class="left-section">
+            <div class="hero-bg-overlay"></div>
+            
+            <!-- TOP NAV BAR -->
+            <div class="hero-topbar">
+                <div class="brand-box">
+                    <svg class="ncc-shield-logo" viewBox="0 0 100 120" width="44" height="52">
+                        <defs>
+                            <linearGradient id="shieldGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#fef08a"/>
+                                <stop offset="50%" stop-color="#eab308"/>
+                                <stop offset="100%" stop-color="#ca8a04"/>
+                            </linearGradient>
+                            <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#dc2626"/>
+                                <stop offset="50%" stop-color="#1e3a8a"/>
+                                <stop offset="100%" stop-color="#0284c7"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- Shield Base -->
+                        <path d="M50 5 L90 20 V60 C90 85 50 110 50 110 C50 110 10 85 10 60 V20 Z" fill="url(#bgGrad)" stroke="url(#shieldGold)" stroke-width="4"/>
+                        <!-- Inner Border -->
+                        <path d="M50 10 L85 23 V58 C85 80 50 102 50 102 C50 102 15 80 15 58 V23 Z" fill="none" stroke="url(#shieldGold)" stroke-width="1.5" opacity="0.8"/>
+                        <!-- Star Wreath & Text -->
+                        <text x="50" y="58" font-family="'Outfit', sans-serif" font-weight="800" font-size="22" fill="#ffffff" text-anchor="middle" letter-spacing="1">NCC</text>
+                        <!-- Stars -->
+                        <polygon points="50,26 52,32 58,32 53,36 55,42 50,38 45,42 47,36 42,32 48,32" fill="url(#shieldGold)"/>
+                    </svg>
+                    <div class="brand-text">
+                        <h1>NCC AI Learning Portal</h1>
+                        <p>Learn  |  Prepare  |  Serve</p>
+                    </div>
+                </div>
+
+                <div class="jai-hind-badge">
+                    <span>Jai Hind</span>
+                    <div class="tricolor-bar"></div>
+                </div>
+            </div>
+
+            <!-- MAIN HERO CONTENT -->
+            <div class="welcome-text">
+                <h2>
+                    Begin Your Cadet Journey<br>
+                    <span class="gold-highlight">Join NCC AI Portal</span><br>
+                    Prepare &amp; Excel
+                </h2>
+
+                <div class="sub-tagline">
+                    <span>Study Material</span>
+                    <span class="dot">•</span>
+                    <span>Mock Tests</span>
+                    <span class="dot">•</span>
+                    <span>AI Guidance</span>
+                </div>
+                <p class="hero-desc">Register for 100% Free Access to Certified NCC Training Resources</p>
+            </div>
+
+            <!-- FEATURE TILES GRID -->
+            <div class="hero-features">
+                <div class="feature-tile">
+                    <div class="tile-icon">🎖️</div>
+                    <span>B &amp; C Cert Prep</span>
+                </div>
+                <div class="feature-tile">
+                    <div class="tile-icon">📄</div>
+                    <span>PDF Optimizer</span>
+                </div>
+                <div class="feature-tile">
+                    <div class="tile-icon">🎯</div>
+                    <span>Interactive Quizzes</span>
+                </div>
+                <div class="feature-tile">
+                    <div class="tile-icon">🤖</div>
+                    <span>Multi-Lingual AI</span>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ================= RIGHT REGISTRATION CARD ================= -->
+        <div class="right-section">
+            <div class="login-box">
+                
+                <!-- CARD CREST LOGO -->
+                <div class="card-logo-box">
+                    <svg viewBox="0 0 100 120" width="52" height="60">
+                        <path d="M50 5 L90 20 V60 C90 85 50 110 50 110 C50 110 10 85 10 60 V20 Z" fill="url(#bgGrad)" stroke="url(#shieldGold)" stroke-width="4"/>
+                        <path d="M50 10 L85 23 V58 C85 80 50 102 50 102 C50 102 15 80 15 58 V23 Z" fill="none" stroke="url(#shieldGold)" stroke-width="1.5" opacity="0.8"/>
+                        <text x="50" y="58" font-family="'Outfit', sans-serif" font-weight="800" font-size="22" fill="#ffffff" text-anchor="middle" letter-spacing="1">NCC</text>
+                        <polygon points="50,26 52,32 58,32 53,36 55,42 50,38 45,42 47,36 42,32 48,32" fill="url(#shieldGold)"/>
+                    </svg>
+                </div>
+
+                <h2>Create Account</h2>
+                <p class="subtitle">Join thousands of cadets mastering the curriculum</p>
+
+                <!-- INLINE AUTH ALERT -->
+                <div id="authAlert" class="auth-alert" style="display:none;"></div>
+
+                <form id="signupForm" onsubmit="event.preventDefault(); createAccount();" style="width:100%; display:flex; flex-direction:column; gap:16px;">
+                    
+                    <!-- INPUT 1: FULL NAME -->
+                    <div class="input-group">
+                        <span class="input-icon">👤</span>
+                        <input 
+                            type="text" 
+                            id="signupName" 
+                            placeholder="Full Cadet Name"
+                            required
+                            autocomplete="name"
+                        >
+                    </div>
+
+                    <!-- INPUT 2: EMAIL / CADET ID -->
+                    <div class="input-group">
+                        <span class="input-icon">✉️</span>
+                        <input 
+                            type="email" 
+                            id="signupEmail" 
+                            placeholder="Email Address"
+                            required
+                            autocomplete="email"
+                        >
+                    </div>
+
+                    <!-- INPUT 3: PASSWORD -->
+                    <div class="input-group">
+                        <span class="input-icon">🔒</span>
+                        <input 
+                            type="password" 
+                            id="signupPassword" 
+                            placeholder="Create Password (min. 4 chars)"
+                            required
+                            autocomplete="new-password"
+                        >
+                        <button type="button" class="eye-toggle" onclick="togglePasswordVisibility('signupPassword', this)" title="Show/Hide Password">
+                            👁️
+                        </button>
+                    </div>
+
+                    <!-- INPUT 4: CONFIRM PASSWORD -->
+                    <div class="input-group">
+                        <span class="input-icon">🔒</span>
+                        <input 
+                            type="password" 
+                            id="confirmPassword" 
+                            placeholder="Confirm Password"
+                            required
+                            autocomplete="new-password"
+                        >
+                        <button type="button" class="eye-toggle" onclick="togglePasswordVisibility('confirmPassword', this)" title="Show/Hide Password">
+                            👁️
+                        </button>
+                    </div>
+
+                    <!-- CREATE ACCOUNT BUTTON -->
+                    <button type="submit" class="login-btn" id="signupBtn">
+                        <span class="btn-text">Create Account →</span>
+                        <span class="btn-spinner" style="display:none;">⌛ Creating Account...</span>
+                    </button>
+                </form>
+
+                <!-- DIVIDER -->
+                <div class="or-divider">
+                    <span>OR</span>
+                </div>
+
+                <!-- GOOGLE SIGNUP -->
+                <button type="button" class="google-btn" onclick="googleLogin()">
+                    <svg class="google-icon" viewBox="0 0 24 24" width="20" height="20">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                    </svg>
+                    Sign up with Google
+                </button>
+
+                <!-- LOGIN LINK -->
+                <p class="signup-prompt">
+                    Already have an account? <a href="index.html">Login here</a>
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ================= ORIGINAL GOOGLE SIGN-IN MODAL ================= -->
+    <div id="googleAuthModal" class="google-modal-backdrop" style="display:none;">
+        <div class="google-modal-card">
+            <div class="google-modal-header">
+                <div class="google-header-content">
+                    <svg viewBox="0 0 24 24" width="28" height="28">
+                        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                    </svg>
+                    <div class="google-modal-title">
+                        <h3>Sign up with Google</h3>
+                        <p>Authenticate with your original cadet Google / Gmail account</p>
+                    </div>
+                </div>
+                <button type="button" class="google-close-btn" onclick="closeGoogleModal()">✕</button>
+            </div>
+            <div class="google-modal-body">
+                <!-- Google GIS Official Button Box (renders if client ID configured) -->
+                <div id="googleOfficialBtnBox" style="display:flex; justify-content:center; margin-bottom:4px;"></div>
+
+                <form id="originalGoogleForm" onsubmit="event.preventDefault(); submitOriginalGoogleLogin();" style="display:flex; flex-direction:column; gap:14px;">
+                    <div>
+                        <label for="originalGoogleEmail" style="font-size:13px; font-weight:600; color:#1e293b; display:block; margin-bottom:6px;">
+                            Your Original Google / Gmail ID:
+                        </label>
+                        <div class="input-group">
+                            <span class="input-icon">✉️</span>
+                            <input
+                                type="email"
+                                id="originalGoogleEmail"
+                                placeholder="Enter your original email (e.g. yourname@gmail.com)"
+                                required
+                                autocomplete="email"
+                            />
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="originalGoogleName" style="font-size:13px; font-weight:600; color:#1e293b; display:block; margin-bottom:6px;">
+                            Cadet Full Name:
+                        </label>
+                        <div class="input-group">
+                            <span class="input-icon">👤</span>
+                            <input
+                                type="text"
+                                id="originalGoogleName"
+                                placeholder="Your Name as on Google profile"
+                                autocomplete="name"
+                            />
+                        </div>
+                    </div>
+
+                    <button type="submit" class="login-btn" style="margin-top:6px;">
+                        <span>Register with Original Mail →</span>
+                    </button>
+                </form>
+
+                <div style="font-size:11px; color:#64748b; line-height:1.5; margin-top:6px; background:#f8fafc; padding:10px 12px; border-radius:8px; border:1px solid #e2e8f0;">
+                    🛡️ <b>Original Account Guarantee:</b> All test scores, certificates, and chat sessions are linked directly to your authentic email address.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GOOGLE IDENTITY SERVICES SDK -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NCC AI Learning Portal - Dashboard</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        if (typeof pdfjsLib !== 'undefined') {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        }
+    </script>
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-box">
+                NCC
+            </div>
+
+            <div>
+                <h2>NCC AI</h2>
+                <span>Learning Portal</span>
+            </div>
+
+        </div>
+
+
+        <nav>
+
+            <button class="menu active"
+                    onclick="showSection('home')">
+                🏠 Home
+            </button>
+
+            <button class="menu"
+                    onclick="showSection('bCertificate')">
+                🛡️ B Certificate
+            </button>
+
+            <button class="menu"
+                    onclick="showSection('cCertificate')">
+                🏅 C Certificate
+            </button>
+
+            <button class="menu"
+                    onclick="showSection('mcq')">
+                📝 MCQ Practice
+            </button>
+
+            <button class="menu"
+                    onclick="showSection('mock')">
+                📋 Mock Test
+            </button>
+
+            <button class="menu"
+                    onclick="showSection('ai')">
+                🤖 NCC AI Agent
+            </button>
+
+            <button class="menu"
+                    onclick="showSection('study')">
+                📚 Study Material
+            </button>
+
+            <button class="menu"
+                    onclick="openPdfReaderModal()">
+                📖 PDF Reader & Optimizer
+            </button>
+
+            <button class="menu"
+                    id="sidebarApiKeyBtn"
+                    onclick="openApiKeyModal()"
+                    style="border-left: 3px solid #0284c7; background: rgba(2, 132, 199, 0.08); font-weight: 600;">
+                🔑 AI API Key
+            </button>
+
+            <button class="menu"
+                    onclick="showSection('progress')">
+                📊 My Progress
+            </button>
+
+            <button class="menu"
+                    onclick="showSection('settings')">
+                ⚙️ Settings
+            </button>
+
+            <button class="menu"
+                    onclick="logout()"
+                    style="background:rgba(239,68,68,0.15); color:#fca5a5; border:1px solid rgba(239,68,68,0.3); margin-top:10px;">
+                🔑 Login Page / Logout
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <p>Discipline</p>
+            <p>Builds</p>
+            <p>Better Citizens</p>
+
+            <strong>Jai Hind 🇮🇳</strong>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+
+        <!-- ================= TOP BAR ================= -->
+
+        <header class="topbar">
+
+            <div class="mobile-title">
+                NCC AI Learning Portal
+            </div>
+
+
+            <input
+                type="text"
+                class="search"
+                id="searchBox"
+                placeholder="Search topics, tests, MCQs..."
+                onkeyup="searchContent()"
+            >
+
+
+            <!-- Live API Key Status Chip in Topbar -->
+            <button
+                type="button"
+                id="topbarApiKeyPill"
+                onclick="openApiKeyModal()"
+                class="api-key-pill-btn offline"
+                title="Manage AI API Key (Gemini / OpenAI)">
+                <span id="topbarApiDot" class="status-indicator-dot offline"></span>
+                <span id="topbarApiText">🔑 AI Key: Offline</span>
+            </button>
+
+            <div class="profile" style="cursor:pointer;" onclick="logout()" title="Click to go to Login Page / Switch Account">
+
+                <span class="notification">
+                    🔔
+                </span>
+
+                <div class="avatar">
+                    A
+                </div>
+
+                <div>
+                    <b id="userName">
+                        Akshay Ray
+                    </b>
+
+                    <small id="userEmailSub" style="display:block; font-size:11px; color:#64748b;">
+                        🔑 Click to Login / Logout
+                    </small>
+                </div>
+
+                <span>
+                    ⌄
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <section class="content">
+
+
+            <!-- ================================================= -->
+            <!-- HOME -->
+            <!-- ================================================= -->
+
+            <div id="home"
+                 class="section active-section">
+
+
+                <!-- HERO -->
+
+                <div class="hero">
+
+                    <div class="hero-text">
+
+                        <span class="small-title">
+                            NCC AI Learning Portal
+                        </span>
+
+                        <h1>
+                            Your Smart Partner for<br>
+                            B & C Certificate Examination
+                        </h1>
+
+                        <p>
+                            Learn • Practice • Grow
+                        </p>
+
+                    </div>
+
+
+                    <div class="flag">
+                        🇮🇳
+                    </div>
+
+                </div>
+
+
+                <!-- QUICK STATS -->
+
+                <div class="stats">
+
+                    <div class="stat-card">
+
+                        <span>📘</span>
+
+                        <div>
+
+                            <small>
+                                Total Topics
+                            </small>
+
+                            <strong>
+                                42
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span>📝</span>
+
+                        <div>
+
+                            <small>
+                                MCQs Solved
+                            </small>
+
+                            <strong id="mcqCount">
+                                358
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span>📋</span>
+
+                        <div>
+
+                            <small>
+                                Mock Tests
+                            </small>
+
+                            <strong id="mockCount">
+                                12
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span>⭐</span>
+
+                        <div>
+
+                            <small>
+                                Average Score
+                            </small>
+
+                            <strong>
+                                78%
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FEATURE CARDS -->
+
+                <div class="feature-grid">
+
+
+                    <div class="feature b">
+
+                        <div class="icon">
+                            ★
+                        </div>
+
+                        <h3>
+                            B Certificate
+                        </h3>
+
+                        <p>
+                            Basic training & certificate preparation.
+                        </p>
+
+                        <button onclick="showSection('bCertificate')">
+                            Start Learning →
+                        </button>
+
+                    </div>
+
+
+                    <div class="feature c">
+
+                        <div class="icon">
+                            ✓
+                        </div>
+
+                        <h3>
+                            C Certificate
+                        </h3>
+
+                        <p>
+                            Advanced training & examination preparation.
+                        </p>
+
+                        <button onclick="showSection('cCertificate')">
+                            Start Learning →
+                        </button>
+
+                    </div>
+
+
+                    <div class="feature mcq">
+
+                        <div class="icon">
+                            ▤
+                        </div>
+
+                        <h3>
+                            MCQ Practice
+                        </h3>
+
+                        <p>
+                            Practice NCC questions and improve knowledge.
+                        </p>
+
+                        <button onclick="showSection('mcq')">
+                            Start Practice →
+                        </button>
+
+                    </div>
+
+
+                    <div class="feature mock">
+
+                        <div class="icon">
+                            ⏱
+                        </div>
+
+                        <h3>
+                            Mock Test
+                        </h3>
+
+                        <p>
+                            Simulate real exam environment.
+                        </p>
+
+                        <button onclick="showSection('mock')">
+                            Take Test →
+                        </button>
+
+                    </div>
+
+
+                    <div class="feature ai">
+
+                        <div class="icon">
+                            🤖
+                        </div>
+
+                        <h3>
+                            NCC AI Agent
+                        </h3>
+
+                        <p>
+                            Ask questions and learn with AI.
+                        </p>
+
+                        <button onclick="showSection('ai')">
+                            Chat Now →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STUDY CATEGORIES -->
+
+                <div class="panel">
+
+                    <div class="panel-title">
+
+                        <h2>
+                            📚 Study Categories
+                        </h2>
+
+                        <span onclick="showSection('study')" style="cursor:pointer; color:#1766b3; font-weight:500;">
+                            View All →
+                        </span>
+
+                    </div>
+
+
+                    <div class="category">
+
+                        <div class="category-icon b-icon">
+                            ★
+                        </div>
+
+                        <div class="category-info">
+
+                            <h3>
+                                B Certificate
+                            </h3>
+
+                            <p>
+                                Topics: NCC General Knowledge, Organisation,
+                                History, National Integration, etc.
+                            </p>
+
+                            <div class="progress">
+                                <div style="width:60%"></div>
+                            </div>
+
+                        </div>
+
+                        <b>
+                            60% Completed
+                        </b>
+
+                        <button onclick="showSection('bCertificate')">
+                            Explore →
+                        </button>
+
+                    </div>
+
+
+                    <div class="category">
+
+                        <div class="category-icon c-icon">
+                            ✓
+                        </div>
+
+                        <div class="category-info">
+
+                            <h3>
+                                C Certificate
+                            </h3>
+
+                            <p>
+                                Topics: Leadership, Communication,
+                                Disaster Management, etc.
+                            </p>
+
+                            <div class="progress">
+                                <div style="width:35%"></div>
+                            </div>
+
+                        </div>
+
+                        <b>
+                            35% Completed
+                        </b>
+
+                        <button onclick="showSection('cCertificate')">
+                            Explore →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- AI BANNER -->
+
+                <div class="ai-banner">
+
+                    <div>
+
+                        <h2>
+                            🤖 Let's Learn Together!
+                        </h2>
+
+                        <p>
+                            Ask anything about NCC, get instant help from AI.
+                        </p>
+
+                    </div>
+
+                    <button onclick="showSection('ai')">
+                        Open NCC AI Agent →
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- B CERTIFICATE -->
+            <!-- ================================================= -->
+
+            <div id="bCertificate"
+                 class="section">
+
+
+                <div class="page-card">
+
+                    <h1>
+                        🛡️ B Certificate
+                    </h1>
+
+                    <p>
+                        Prepare for your NCC B Certificate examination.
+                    </p>
+
+
+                    <!-- SIX TOPICS -->
+
+                    <div class="topic-grid">
+
+                        <button
+                            type="button"
+                            onclick="startBQuiz('NCC General Knowledge')">
+                            📚 NCC General Knowledge
+                        </button>
+
+                        <button
+                            type="button"
+                            onclick="startBQuiz('NCC Organisation & History')">
+                            🏛️ NCC Organisation & History
+                        </button>
+
+                        <button
+                            type="button"
+                            onclick="startBQuiz('National Integration')">
+                            🇮🇳 National Integration
+                        </button>
+
+                    </div>
+
+
+                    <!-- ================= QUIZ AREA ================= -->
+
+                    <div id="bQuizArea"
+                         style="display:none;">
+
+                        <hr>
+
+
+                        <h2 id="bQuizTitle">
+                        </h2>
+
+
+                        <div id="bQuestion">
+                        </div>
+
+
+                        <div id="bOptions">
+                        </div>
+
+
+                        <div id="bResult">
+                        </div>
+
+
+                        <button
+                            type="button"
+                            id="bNextBtn"
+                            class="big-button"
+                            onclick="nextBQuestion()"
+                            style="display:none;">
+
+                            Next Question →
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- C CERTIFICATE -->
+            <!-- ================================================= -->
+
+      <div id="cCertificate" class="section">
+
+    <div class="page-card">
+
+        <h1>🏅 C Certificate</h1>
+
+        <p>Advanced NCC C Certificate preparation.</p>
+
+        <div class="topic-grid">
+
+            <button type="button" onclick="startCQuiz('Leadership')">
+                👨‍✈️ Leadership
+            </button>
+
+            <button type="button" onclick="startCQuiz('Communication')">
+                💬 Communication
+            </button>
+
+            <button type="button" onclick="startCQuiz('Disaster Management')">
+                🚨 Disaster Management
+            </button>
+
+            <button type="button" onclick="startCQuiz('Map Reading')">
+                🗺️ Map Reading
+            </button>
+
+            <button type="button" onclick="startCQuiz('National Integration')">
+                🇮🇳 National Integration
+            </button>
+
+            <button type="button" onclick="startCQuiz('Defence Awareness')">
+                🛡️ Defence Awareness
+            </button>
+
+        </div>
+
+        <div id="cQuizArea" style="display:none;">
+
+            <hr>
+
+            <h2 id="cQuizTitle"></h2>
+
+            <div id="cQuestion"></div>
+
+            <div id="cOptions"></div>
+
+            <div id="cResult"></div>
+
+            <button
+                type="button"
+                id="cNextBtn"
+                class="big-button"
+                onclick="nextCQuestion()"
+                style="display:none;">
+                Next Question →
+            </button>
+
+        </div>
+
+    </div>
+
+</div>   
+
+            <!-- ================================================= -->
+            <!-- MCQ -->
+            <!-- ================================================= -->
+
+            <div id="mcq"
+                 class="section">
+
+
+                <div class="page-card">
+
+                    <h1>
+                        📝 MCQ Practice
+                    </h1>
+
+                    <p>
+                        Practice NCC multiple-choice questions.
+                    </p>
+
+
+                    <button
+                        class="big-button"
+                        type="button"
+                        onclick="startMCQ()">
+
+                        Start MCQ Practice
+
+                    </button>
+
+
+                    <div id="mcqArea">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- MOCK TEST -->
+            <!-- ================================================= -->
+
+            <div id="mock"
+                 class="section">
+
+
+                <div class="page-card">
+
+                    <h1>
+                        📋 Mock Test
+                    </h1>
+
+                    <p>
+                        Take a complete NCC mock examination.
+                    </p>
+
+
+                    <button
+                        class="big-button"
+                        type="button"
+                        onclick="startMock()">
+
+                        Start Mock Test
+
+                    </button>
+
+
+                    <div id="mockArea">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- AI ASSISTANT -->
+            <!-- ================================================= -->
+
+            <div id="ai"
+                 class="section">
+
+                <div class="page-card ai-card">
+
+                    <div class="ai-header">
+                        <div>
+                            <h1>🤖 NCC AI Agent</h1>
+                            <p>Ask questions in any language about NCC syllabus, A/B/C Cert exams, Drill, Weapons, Map Reading, General Knowledge, Coding, or uploaded PDFs.</p>
+                        </div>
+                        <div class="ai-controls-toolbar">
+                            <button type="button" class="ai-tool-action-btn primary" onclick="startNewChat()" title="Start a fresh chat session">
+                                ✨ New Chat
+                            </button>
+                            <button type="button" class="ai-tool-action-btn" onclick="openChatHistoryModal()" title="View saved conversation history">
+                                📜 Chat History
+                            </button>
+                            <button type="button" class="ai-tool-action-btn" id="aiApiKeyBtn" onclick="openApiKeyModal()" title="Configure Google Gemini API Key">
+                                🔑 API Key <span id="apiKeyDot" class="status-indicator-dot offline" title="API Key Status"></span>
+                            </button>
+                            <button type="button" class="ai-tool-action-btn danger" onclick="clearCurrentChat()" title="Clear current chat view">
+                                🗑️ Clear Chat
+                            </button>
+                            <div class="ai-status-badge">
+                                <span class="pulse-dot"></span> Online & Connected
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DRAG & DROP / CHAT CONTAINER -->
+                    <div class="chat-container">
+                        <div class="chat-box"
+                             id="chatBox"
+                             ondragover="handleDragOver(event)"
+                             ondragleave="handleDragLeave(event)"
+                             ondrop="handleFileDrop(event)">
+
+                            <div class="bot-message ai-welcome-bubble">
+                                <div class="bot-avatar">🤖</div>
+                                <div class="bot-content">
+                                    <strong>Hello! 👋 How can I help you today?</strong>
+                                    <p style="margin-top:6px; line-height:1.6;">
+                                        Ask me anything—whether it's <b>NCC & Certificate Exams</b>, Science, Programming, General Knowledge, Mathematics, or Translations. You can type in <b>any language</b> or click a sample question below:
+                                    </p>
+                                    <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;">
+                                        <button type="button" class="opt-small-btn" style="background:#e0f2fe; color:#0369a1; border-color:#38bdf8; padding:5px 10px; font-weight:600;" onclick="quickPrompt('What is the full form and motto of NCC?')">❓ Full Form & Motto of NCC</button>
+                                        <button type="button" class="opt-small-btn" style="background:#fef3c7; color:#92400e; border-color:#fcd34d; padding:5px 10px; font-weight:600;" onclick="quickPrompt('.22 rifle ki effective range aur firing position samjhao')">🔫 .22 Rifle (Hinglish)</button>
+                                        <button type="button" class="opt-small-btn" style="background:#f0fdf4; color:#166534; border-color:#86efac; padding:5px 10px; font-weight:600;" onclick="quickPrompt('ड्रिल के मुख्य उद्देश्य और सिद्धांत क्या हैं?')">💂 ड्रिल के सिद्धांत (Hindi)</button>
+                                        <button type="button" class="opt-small-btn" style="background:#fae8ff; color:#86198f; border-color:#f0abfc; padding:5px 10px; font-weight:600;" onclick="quickPrompt('What are the entry benefits of C Certificate in Indian Army?')">🏅 C Cert Entry Benefits</button>
+                                    </div>
+                                    <p style="margin-top:8px; font-size:12px; color:#0369a1;">
+                                        💡 <i>Tip: Upload your PDF notes using the 📎 button below to ask document-grounded questions!</i>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- ATTACHED FILES PREVIEW BAR -->
+                        <div id="aiAttachedFiles" class="attached-files-container" style="display:none;"></div>
+
+                        <!-- QUICK PROMPT CHIPS -->
+                        <div class="chat-chips" id="aiChips">
+                            <button type="button" class="chip" onclick="quickPrompt('What are the core principles of Drill in NCC?')">💂 Drill Principles</button>
+                            <button type="button" class="chip" onclick="quickPrompt('.22 rifle ki effective range and firing positions samjhao')">🔫 .22 Rifle (Hinglish)</button>
+                            <button type="button" class="chip" onclick="quickPrompt('Map Reading me Grid Reference kaise nikalte hain?')">🗺️ Map Reading</button>
+                            <button type="button" class="chip" onclick="quickPrompt('First Aid me ABC rule kya hota hai?')">🩺 First Aid ABC</button>
+                            <button type="button" class="chip" onclick="quickPrompt('C Certificate exam ke baad Indian Army entry benefits kya hain?')">🏅 C Cert Benefits</button>
+                            <button type="button" class="chip" onclick="quickPrompt('Summarize the key points of the uploaded document')">📑 Summarize PDF</button>
+                        </div>
+
+                        <!-- CHAT INPUT & UPLOAD BAR -->
+                        <div class="chat-input-wrapper">
+                            <!-- Hidden File Input -->
+                            <input
+                                type="file"
+                                id="aiFileInput"
+                                accept=".pdf,.txt,.md,.doc,.docx"
+                                multiple
+                                style="display:none;"
+                                onchange="handleFileUpload(event)"
+                            >
+
+                            <button
+                                type="button"
+                                class="upload-btn"
+                                id="uploadFileBtn"
+                                title="Upload PDF or notes file"
+                                onclick="document.getElementById('aiFileInput').click()">
+                                <span class="upload-icon">📎</span>
+                                <span class="upload-text">Upload PDF</span>
+                            </button>
+
+                            <button
+                                type="button"
+                                class="upload-btn"
+                                id="openPdfReaderBtn"
+                                title="Open PDF Reader & Optimizer"
+                                style="border-style:solid; background:#eef6fc; color:#0369a1;"
+                                onclick="openPdfReaderModal()">
+                                <span class="upload-icon">📖</span>
+                                <span class="upload-text">Reader</span>
+                            </button>
+
+                            <!-- VOICE INPUT MIC BUTTON -->
+                            <button
+                                type="button"
+                                class="mic-btn"
+                                id="aiVoiceBtn"
+                                title="Speak your question (Voice Input)"
+                                onclick="toggleVoiceInput()">
+                                🎤
+                            </button>
+
+                            <!-- LANGUAGE SELECTOR DROPDOWN -->
+                            <select id="aiLangSelect" class="lang-select-dropdown" title="Select response language">
+                                <option value="auto" selected>🌐 Auto Detect</option>
+                                <option value="English">English</option>
+                                <option value="Hindi">Hindi (हिंदी)</option>
+                                <option value="Hinglish">Hinglish</option>
+                                <option value="Punjabi">Punjabi (ਪੰਜਾਬੀ)</option>
+                                <option value="Bengali">Bengali (বাংলা)</option>
+                                <option value="Marathi">Marathi (मराठी)</option>
+                                <option value="Gujarati">Gujarati (ગુજરાતી)</option>
+                                <option value="Tamil">Tamil (தமிழ்)</option>
+                                <option value="Telugu">Telugu (తెలుగు)</option>
+                                <option value="Kannada">Kannada (ಕನ್ನಡ)</option>
+                                <option value="Malayalam">Malayalam (മലയാളം)</option>
+                                <option value="Urdu">Urdu (اردو)</option>
+                            </select>
+
+                            <div class="input-field-wrapper">
+                                <input
+                                    id="aiInput"
+                                    type="text"
+                                    placeholder="Ask anything..."
+                                    onkeydown="if(event.key==='Enter') askAI()"
+                                >
+                            </div>
+
+                            <button
+                                type="button"
+                                class="send-btn"
+                                onclick="askAI()">
+                                <span>Send</span>
+                                <span style="font-size:16px;">➤</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- STUDY MATERIAL -->
+            <!-- ================================================= -->
+
+            <div id="study"
+                 class="section">
+
+
+                <div class="page-card">
+
+                    <h1>
+                        📚 Study Material
+                    </h1>
+
+
+                    <div class="material-list">
+
+                        <div>
+                            📘 NCC Drill Notes
+                            <button onclick="openStudyNote('drill')">
+                                Open
+                            </button>
+                        </div>
+
+                        <div>
+                            🗺️ Map Reading Notes
+                            <button onclick="openStudyNote('map_reading')">
+                                Open
+                            </button>
+                        </div>
+
+                        <div>
+                            🩺 First Aid Notes
+                            <button onclick="openStudyNote('first_aid')">
+                                Open
+                            </button>
+                        </div>
+
+                        <div>
+                            🎖️ NCC General Knowledge
+                            <button onclick="openStudyNote('general_knowledge')">
+                                Open
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- PROGRESS -->
+            <!-- ================================================= -->
+
+            <div id="progress"
+                 class="section">
+
+
+                <div class="page-card">
+
+                    <h1>
+                        📊 My Progress
+                    </h1>
+
+
+                    <div class="big-progress">
+
+                        <div style="width:78%">
+                        </div>
+
+                    </div>
+
+
+                    <h2>
+                        78% Overall Progress
+                    </h2>
+
+
+                    <p>
+                        Keep practicing to improve your NCC
+                        examination preparation.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- SETTINGS -->
+            <!-- ================================================= -->
+
+            <div id="settings"
+                 class="section">
+
+
+                <div class="page-card">
+
+                    <h1>
+                        ⚙️ Settings
+                    </h1>
+
+
+                    <button
+                        class="big-button"
+                        type="button"
+                        onclick="logout()">
+
+                        Logout
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- ================================================= -->
+<!-- PDF READER & OPTIMIZER MODAL -->
+<!-- ================================================= -->
+<div id="pdfReaderModal" class="pdf-modal-backdrop" style="display:none;">
+    <div class="pdf-modal-window">
+        <!-- HEADER -->
+        <div class="pdf-modal-header">
+            <div class="pdf-header-title">
+                <span class="pdf-icon">📕</span>
+                <div>
+                    <h2 id="pdfReaderDocTitle">NCC Document & Exam Paper Reader</h2>
+                    <span id="pdfReaderDocMeta" class="pdf-meta">Select or upload any PDF to view, read & optimize for exam preparation</span>
+                </div>
+            </div>
+            
+            <div class="pdf-header-actions">
+                <input type="file" id="modalPdfUploadInput" accept=".pdf" style="display:none;" onchange="handleModalPdfUpload(event)">
+                <button type="button" class="pdf-tool-btn" onclick="document.getElementById('modalPdfUploadInput').click()">
+                    📁 Open PDF File
+                </button>
+                <button type="button" class="pdf-tool-btn primary" onclick="optimizeCurrentPdf()">
+                    ⚡ Optimize for Exam
+                </button>
+                <button type="button" class="pdf-close-btn" onclick="closePdfReaderModal()" title="Close Reader">✕</button>
+            </div>
+        </div>
+
+        <!-- MAIN BODY (2-PANE VIEWER + OPTIMIZER) -->
+        <div class="pdf-modal-body">
+            <!-- LEFT: VISUAL PDF VIEWER -->
+            <div class="pdf-viewer-pane">
+                <div class="pdf-toolbar">
+                    <div class="pdf-nav-controls">
+                        <button type="button" class="pdf-btn" id="pdfPrevPageBtn" onclick="pdfPrevPage()">◀ Prev</button>
+                        <span id="pdfPageInfo">Page <b id="pdfCurrentPageNum">1</b> of <b id="pdfTotalPages">1</b></span>
+                        <button type="button" class="pdf-btn" id="pdfNextPageBtn" onclick="pdfNextPage()">Next ▶</button>
+                    </div>
+
+                    <div class="pdf-zoom-controls">
+                        <button type="button" class="pdf-btn" onclick="pdfZoomOut()" title="Zoom Out">−</button>
+                        <span id="pdfZoomLevel">100%</span>
+                        <button type="button" class="pdf-btn" onclick="pdfZoomIn()" title="Zoom In">+</button>
+                        <button type="button" class="pdf-btn" onclick="pdfZoomReset()">Fit</button>
+                    </div>
+
+                    <div class="pdf-mode-toggle">
+                        <button type="button" class="pdf-mode-btn active" id="viewModeCanvasBtn" onclick="setPdfViewMode('canvas')">🖼️ Visual</button>
+                        <button type="button" class="pdf-mode-btn" id="viewModeTextBtn" onclick="setPdfViewMode('text')">📄 Clean Text</button>
+                    </div>
+                </div>
+
+                <div class="pdf-canvas-container" id="pdfCanvasContainer">
+                    <canvas id="pdfRenderCanvas"></canvas>
+                    <div id="pdfTextLayer" style="display:none;"></div>
+                    <div id="pdfLoadingSpinner" style="display:none;" class="pdf-spinner">
+                        <div class="spinner-ring"></div>
+                        <p>Rendering PDF page...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: OPTIMIZER & AI REVISION PANE -->
+            <div class="pdf-optimizer-pane">
+                <div class="optimizer-tabs">
+                    <button type="button" class="opt-tab active" id="tabSummary" onclick="switchOptTab('summary')">⚡ Smart Exam Notes</button>
+                    <button type="button" class="opt-tab" id="tabQa" onclick="switchOptTab('qa')">🤖 Ask AI on PDF</button>
+                    <button type="button" class="opt-tab" id="tabQuiz" onclick="switchOptTab('quiz')">📝 PDF Quiz Generator</button>
+                </div>
+
+                <!-- TAB 1: OPTIMIZED NOTES -->
+                <div id="optTabSummaryContent" class="opt-tab-content">
+                    <div class="opt-action-bar">
+                        <span>High-Yield Cadet Revision</span>
+                        <div style="display:flex; gap:6px;">
+                            <button type="button" class="opt-small-btn" onclick="copyOptimizedNotes()">📋 Copy Notes</button>
+                            <button type="button" class="opt-small-btn" style="background:#0284c7; color:#fff; border-color:#0284c7;" onclick="downloadOptimizedGuide()">📥 Download Guide</button>
+                        </div>
+                    </div>
+                    <div id="optimizedNotesBox" class="optimized-notes-container">
+                        <div class="opt-section">
+                            <h4>💡 Ready to Optimize</h4>
+                            <p style="color:#64748b;">Click <b>⚡ Optimize for Exam</b> in the top bar to extract, denoise, and generate high-yield exam bullet points from the loaded document.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: ASK AI -->
+                <div id="optTabQaContent" class="opt-tab-content" style="display:none;">
+                    <div id="pdfAiChatHistory" class="pdf-chat-history">
+                        <div class="pdf-bot-bubble">
+                            Ask me any question about the pages open in this PDF reader!
+                        </div>
+                    </div>
+                    <div class="pdf-chat-input-row">
+                        <input type="text" id="pdfReaderAiInput" placeholder="Ask question about this PDF..." onkeydown="if(event.key==='Enter') askPdfReaderAI()">
+                        <button type="button" onclick="askPdfReaderAI()">Ask</button>
+                    </div>
+                </div>
+
+                <!-- TAB 3: QUIZ FROM PDF -->
+                <div id="optTabQuizContent" class="opt-tab-content" style="display:none;">
+                    <div id="pdfQuizBox" style="overflow-y:auto; flex:1;">
+                        <p style="color:#64748b; font-size:13px; margin-bottom:12px;">Test your knowledge of this document with auto-generated exam questions.</p>
+                        <button type="button" class="big-button" style="width:100%;" onclick="generatePdfPracticeQuiz()">
+                            🎯 Generate Practice Quiz from this PDF
+                        </button>
+                    </div>
+                </div>
+            </div>
+</div>
+
+<!-- ================================================= -->
+<!-- AI CHAT HISTORY MODAL -->
+<!-- ================================================= -->
+<div id="aiChatHistoryModal" class="pdf-modal-backdrop" style="display:none;">
+    <div class="pdf-modal-window" style="max-width:700px; height:80vh;">
+        <div class="pdf-modal-header">
+            <div class="pdf-header-title">
+                <span class="pdf-icon">📜</span>
+                <div>
+                    <h2>NCC AI Chat History</h2>
+                    <span class="pdf-meta">Saved past conversation sessions & queries</span>
+                </div>
+            </div>
+            <div class="pdf-header-actions">
+                <button type="button" class="pdf-tool-btn danger" style="background:#fee2e2; color:#991b1b; border-color:#fca5a5;" onclick="deleteAllChatHistory()">
+                    🗑️ Clear All Saved History
+                </button>
+                <button type="button" class="pdf-close-btn" onclick="closeChatHistoryModal()" title="Close Modal">✕</button>
+            </div>
+        </div>
+        <div class="pdf-modal-body" style="padding:20px; overflow-y:auto; display:flex; flex-direction:column; gap:12px;" id="aiChatHistoryModalList">
+            <!-- Dynamically populated past chats -->
+        </div>
+    </div>
+</div>
+
+<!-- ================================================= -->
+<!-- AI API KEY SETTINGS MODAL -->
+<!-- ================================================= -->
+<div id="aiApiKeyModal" class="pdf-modal-backdrop" style="display:none;">
+    <div class="pdf-modal-window" style="max-width:580px; height:auto; max-height:90vh;">
+        <div class="pdf-modal-header">
+            <div class="pdf-header-title">
+                <span class="pdf-icon">🔑</span>
+                <div>
+                    <h2>AI Engine & API Key (Gemini / OpenAI)</h2>
+                    <span class="pdf-meta">Connect Google Gemini 1.5 Flash or OpenAI GPT-4o-mini</span>
+                </div>
+            </div>
+            <div class="pdf-header-actions">
+                <button type="button" class="pdf-close-btn" onclick="closeApiKeyModal()" title="Close Modal">✕</button>
+            </div>
+        </div>
+        <div class="pdf-modal-body" style="padding:22px; display:flex; flex-direction:column; gap:16px;">
+            <!-- Status Card -->
+            <div id="apiKeyStatusCard" class="api-key-status-card offline">
+                <div style="display:flex; align-items:center; justify-content:space-between;">
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <span id="apiKeyStatusDot" class="status-indicator-dot offline"></span>
+                        <strong id="apiKeyStatusText" style="font-size:14px;">Offline / Local Fallback Active</strong>
+                    </div>
+                    <span id="apiKeyMaskedDisplay" class="api-key-masked-tag" style="display:none;"></span>
+                </div>
+                <p id="apiKeyStatusDesc" style="margin:6px 0 0 0; font-size:12px; color:#64748b; line-height:1.5;">
+                    Add your AI API key below to unlock live conversational intelligence, detailed military reasoning, and real-time general knowledge.
+                </p>
+            </div>
+
+            <!-- Provider Selection / Free Tier Banner -->
+            <div style="display:flex; gap:10px; background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:12px 14px; align-items:flex-start;">
+                <span style="font-size:20px;">💡</span>
+                <div style="font-size:12px; color:#1e40af; line-height:1.5;">
+                    <strong>Recommended Free Option:</strong> Get a <b>100% Free Google Gemini API Key</b> (no credit card required) from
+                    <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" style="color:#0284c7; font-weight:700; text-decoration:underline;">Google AI Studio ↗</a>.
+                    <br>You can also use an <b>OpenAI API Key</b> (starts with <code>sk-...</code>) if your OpenAI account has active billing credits.
+                </div>
+            </div>
+
+            <!-- Key Input Group -->
+            <div class="api-key-input-group">
+                <label for="geminiApiKeyInput" style="font-size:13px; font-weight:600; color:#1e293b; display:flex; justify-content:space-between;">
+                    <span>API Key (Gemini <code>AIza...</code> or OpenAI <code>sk-...</code>)</span>
+                    <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" style="color:#0756a1; font-weight:600; text-decoration:none; font-size:12px;">
+                        Get Free Gemini Key ↗
+                    </a>
+                </label>
+                <div style="display:flex; gap:8px; margin-top:6px; position:relative;">
+                    <input
+                        type="password"
+                        id="geminiApiKeyInput"
+                        placeholder="Paste your key: AIzaSy... (Gemini) or sk-... (OpenAI)"
+                        style="flex:1; padding:10px 42px 10px 14px; border:1px solid #cbd5e1; border-radius:8px; font-size:13px; font-family:monospace;"
+                        onkeydown="if(event.key==='Enter') saveApiKey()"
+                    />
+                    <button
+                        type="button"
+                        id="toggleKeyVisibilityBtn"
+                        onclick="toggleApiKeyVisibility()"
+                        style="position:absolute; right:10px; top:50%; transform:translateY(-50%); background:none; border:none; cursor:pointer; font-size:16px; color:#64748b; padding:4px;"
+                        title="Show/Hide Key"
+                    >
+                        👁️
+                    </button>
+                </div>
+                <span style="font-size:11px; color:#64748b; margin-top:4px; display:block;">
+                    🔒 Keys are stored securely in your local environment (<code>.env</code>) and tested securely on your machine.
+                </span>
+            </div>
+
+            <!-- Testing & Feedback Message Area -->
+            <div id="apiKeyFeedback" style="display:none; padding:10px 14px; border-radius:8px; font-size:13px;"></div>
+
+            <!-- Actions Bar -->
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px; padding-top:14px; border-top:1px solid #e2e8f0; gap:10px; flex-wrap:wrap;">
+                <button type="button" class="opt-small-btn" id="btnTestKey" onclick="testApiKey()" style="background:#f1f5f9; color:#334155; border-color:#cbd5e1;">
+                    🧪 Test Connection
+                </button>
+                <div style="display:flex; gap:8px;">
+                    <button type="button" class="opt-small-btn danger" id="btnClearKey" onclick="clearApiKey()" style="background:#fee2e2; color:#991b1b; border-color:#fca5a5; display:none;">
+                        🗑️ Remove Key
+                    </button>
+                    <button type="button" class="big-button" id="btnSaveKey" onclick="saveApiKey()" style="padding:8px 18px; font-size:13px;">
+                        💾 Save & Apply Key
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ================================================= -->
+<!-- JAVASCRIPT FILES -->
+<!-- ================================================= -->
+
+<script src="question.js"></script>
+
+<script src="dashboard.js"></script>
+
+<script src="quiz.js"></script>
+
+
+</body>
+
+</html>

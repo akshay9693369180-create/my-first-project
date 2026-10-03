@@ -1,0 +1,739 @@
+/* ==========================================================================
+   NCC AI LEARNING PORTAL - LOGIN & GLOBAL STYLESHEET
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,700&display=swap');
+
+:root {
+    --primary-navy: #092548;
+    --primary-blue: #0f3c7a;
+    --accent-blue: #1d61bd;
+    --gold: #facc15;
+    --gold-dark: #ca8a04;
+    --bg-dark: #07152b;
+    --card-bg: #ffffff;
+    --input-bg: #f8fafc;
+    --input-border: #e2e8f0;
+    --text-primary: #0f172a;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 24px;
+    --shadow-card: 0 20px 45px -10px rgba(0, 0, 0, 0.35);
+    --shadow-input: 0 2px 4px rgba(0, 0, 0, 0.02);
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ================= LOGIN CONTAINER ================= */
+
+.login-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100vw;
+    position: relative;
+    background: radial-gradient(circle at 30% 30%, #0d3464 0%, #061833 60%, #030b19 100%);
+}
+
+/* Background image overlay with atmospheric lighting */
+.login-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(ellipse at center, rgba(13, 52, 100, 0.4) 0%, rgba(3, 11, 25, 0.85) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ================= LEFT HERO SECTION ================= */
+
+.left-section {
+    flex: 1.25;
+    position: relative;
+    z-index: 2;
+    padding: 40px 50px 50px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #ffffff;
+}
+
+.hero-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(7, 21, 43, 0.2) 0%, rgba(7, 21, 43, 0.7) 100%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Hero Top Bar */
+.hero-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.brand-box {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.ncc-shield-logo {
+    filter: drop-shadow(0 4px 12px rgba(234, 179, 8, 0.3));
+}
+
+.brand-text h1 {
+    font-family: var(--font-heading);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.brand-text p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 2px;
+}
+
+/* Jai Hind Badge */
+.jai-hind-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.jai-hind-badge span {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 26px;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.tricolor-bar {
+    width: 75px;
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(to right, #FF9933 33.33%, #FFFFFF 33.33%, #FFFFFF 66.66%, #138808 66.66%);
+    margin-top: 2px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Main Hero Content */
+.welcome-text {
+    margin-top: auto;
+    margin-bottom: 40px;
+    max-width: 620px;
+}
+
+.welcome-text h2 {
+    font-family: var(--font-heading);
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+}
+
+.gold-highlight {
+    color: var(--gold);
+    font-weight: 800;
+    display: inline-block;
+    position: relative;
+    text-shadow: 0 2px 10px rgba(250, 204, 21, 0.3);
+}
+
+.sub-tagline {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.03em;
+    margin-bottom: 8px;
+}
+
+.sub-tagline .dot {
+    color: var(--gold);
+    font-size: 14px;
+}
+
+.hero-desc {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 400;
+}
+
+/* Feature Tiles Grid */
+.hero-features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    width: 100%;
+    max-width: 620px;
+}
+
+.feature-tile {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: var(--radius-md);
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.feature-tile:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(250, 204, 21, 0.4);
+    transform: translateY(-3px);
+}
+
+.tile-icon {
+    font-size: 24px;
+    line-height: 1;
+}
+
+.feature-tile span {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: center;
+    white-space: nowrap;
+}
+
+
+/* ================= RIGHT LOGIN CARD SECTION ================= */
+
+.right-section {
+    flex: 1;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 60px 40px 20px;
+}
+
+.login-box {
+    background: var(--card-bg);
+    width: 100%;
+    max-width: 440px;
+    padding: 40px;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+/* Card Top Crest */
+.card-logo-box {
+    margin-bottom: 20px;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
+}
+
+.login-box h2 {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+}
+
+.login-box .subtitle {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+/* Form Elements */
+#loginForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 16px;
+    font-size: 16px;
+    color: var(--text-muted);
+    pointer-events: none;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 16px 14px 44px;
+    background: var(--input-bg);
+    border: 1.5px solid var(--input-border);
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--text-primary);
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-input);
+}
+
+.input-group input::placeholder {
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+.input-group input:focus {
+    outline: none;
+    background: #ffffff;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 4px rgba(29, 97, 189, 0.12);
+}
+
+/* Eye Toggle */
+.eye-toggle {
+    position: absolute;
+    right: 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--text-muted);
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+.eye-toggle:hover {
+    color: var(--text-primary);
+}
+
+/* Options Row (Remember Me & Forgot Password) */
+.options-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    margin-top: -2px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-weight: 500;
+    user-select: none;
+}
+
+.remember-me input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--primary-blue);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.forgot-link {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.forgot-link:hover {
+    color: var(--primary-navy);
+    text-decoration: underline;
+}
+
+/* Submit Button */
+.login-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #092548 0%, #0f3c7a 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 14px rgba(9, 37, 72, 0.35);
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-btn:hover {
+    background: linear-gradient(135deg, #0b2e59 0%, #154e9e 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(9, 37, 72, 0.45);
+}
+
+.login-btn:active {
+    transform: translateY(0);
+}
+
+/* OR Divider */
+.or-divider {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 22px 0;
+}
+
+.or-divider::before,
+.or-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--input-border);
+}
+
+.or-divider span {
+    padding: 0 14px;
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+/* Google Login Button */
+.google-btn {
+    width: 100%;
+    padding: 13px;
+    background: #ffffff;
+    border: 1.5px solid var(--input-border);
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    color: #334155;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-input);
+}
+
+.google-btn:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    color: #0f172a;
+    transform: translateY(-1px);
+}
+
+/* Signup Prompt */
+.signup-prompt {
+    margin-top: 24px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.signup-prompt a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 4px;
+}
+
+.signup-prompt a:hover {
+    text-decoration: underline;
+    color: var(--primary-navy);
+}
+
+
+/* ================= RESPONSIVE DESIGN ================= */
+
+@media (max-width: 1024px) {
+    .left-section {
+        padding: 35px 40px;
+    }
+    
+    .right-section {
+        padding: 30px 30px 30px 10px;
+    }
+
+    .welcome-text h2 {
+        font-size: 34px;
+    }
+
+    .hero-features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 880px) {
+    .login-container {
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .left-section {
+        flex: none;
+        padding: 30px 24px;
+    }
+
+    .right-section {
+        flex: none;
+        padding: 24px 20px 40px 20px;
+    }
+
+    .hero-topbar {
+        margin-bottom: 30px;
+    }
+
+    .welcome-text {
+        margin-bottom: 24px;
+    }
+
+    .welcome-text h2 {
+        font-size: 28px;
+    }
+
+    .hero-features {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .login-box {
+        padding: 32px 24px;
+        max-width: 100%;
+    }
+}
+
+/* ==========================================================================
+   AUTH ALERTS & GOOGLE SSO MODAL STYLES
+   ========================================================================== */
+
+.auth-alert {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    line-height: 1.4;
+    transition: all 0.2s ease;
+}
+
+.auth-alert.error {
+    background: #fef2f2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+}
+
+.auth-alert.success {
+    background: #f0fdf4;
+    color: #15803d;
+    border: 1px solid #bbf7d0;
+}
+
+.auth-alert.info {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+}
+
+/* Google SSO Modal */
+.google-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.google-modal-card {
+    background: #ffffff;
+    width: 100%;
+    max-width: 440px;
+    border-radius: 16px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.google-modal-header {
+    padding: 24px 24px 16px 24px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.google-header-content {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.google-modal-title h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+}
+
+.google-modal-title p {
+    font-size: 13px;
+    color: #64748b;
+    margin: 3px 0 0 0;
+}
+
+.google-close-btn {
+    background: #f1f5f9;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.google-close-btn:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+
+.google-modal-body {
+    padding: 20px 24px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.google-account-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 12px 14px;
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s;
+}
+
+.google-account-btn:hover {
+    background: #f8fafc;
+    border-color: #0284c7;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.08);
+}
+
+.google-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #0284c7;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.google-account-info {
+    flex: 1;
+    overflow: hidden;
+}
+
+.google-account-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0f172a;
+    display: block;
+}
+
+.google-account-email {
+    font-size: 12px;
+    color: #64748b;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.google-custom-box {
+    margin-top: 6px;
+    padding-top: 14px;
+    border-top: 1px dashed #e2e8f0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
+}
+
