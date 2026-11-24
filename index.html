@@ -258,5 +258,14 @@
     <script src="https://accounts.google.com/gsi/client" async defer></script>
     <!-- JAVASCRIPT -->
     <script src="script.js"></script>
+    <script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js")
+      .then(() => console.log("Service Worker Registered"))
+      .catch((error) => console.log("Service Worker Error:", error));
+  });
+}
+</script>
 </body>
 </html>
