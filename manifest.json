@@ -24,19 +24,19 @@
   "screenshots": [
     {
       "src": "./login.jpeg",
-      "sizes": "1080x1920",
+      "sizes": "718x1599",
       "type": "image/jpeg",
       "form_factor": "narrow"
     },
     {
       "src": "./home.jpeg",
-      "sizes": "1080x1920",
+      "sizes": "718x1599",
       "type": "image/jpeg",
       "form_factor": "narrow"
     },
     {
       "src": "./dashboard.jpeg",
-      "sizes": "1080x1920",
+      "sizes": "718x1599",
       "type": "image/jpeg",
       "form_factor": "narrow"
     }
