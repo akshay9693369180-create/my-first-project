@@ -2,6 +2,7 @@
   "name": "NCC AI Learning Portal",
   "short_name": "NCC AI",
   "description": "Learn, Practice, Grow",
+  "lang":"en",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
