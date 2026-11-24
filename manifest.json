@@ -1,27 +1,24 @@
 {
   "name": "NCC AI Learning Portal",
   "short_name": "NCC AI",
-  "id": "/my-first-project/",
-  "description": "An AI-powered learning platform for NCC cadets.",
-  "start_url": "/my-first-project/",
-  "scope": "/my-first-project/",
+  "description": "Learn, Practice, Grow",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
-  "orientation": "any",
-  "background_color": "#ffffff",
-  "theme_color": "#1e3a8a",
-  "dir": "ltr",
-"icons": [
-  {
-    "src": "icons/icon-192.png",
-    "sizes": "192x192",
-    "type": "image/png",
-    "purpose": "any"
-  },
-  {
-    "src": "icons/icon-512.png",
-    "sizes": "512x512",
-    "type": "image/png",
-    "purpose": "any"
-  }
-],
-"categories": ["education", "productivity"]}
+  "background_color": "#06143b",
+  "theme_color": "#06143b",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
