@@ -1,0 +1,13 @@
+{
+  "name": "NCC AI Learning Portal",
+  "short_name": "NCC AI",
+  "id": "/my-first-project/",
+  "description": "An AI-powered learning platform for NCC cadets.",
+  "start_url": "/my-first-project/",
+  "scope": "/my-first-project/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#ffffff",
+  "theme_color": "#1e3a8a",
+  "dir": "ltr"
+}
